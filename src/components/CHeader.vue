@@ -3,7 +3,7 @@
   <v-toolbar dark color="primary">
 
     <!-- header bagian kiri -->
-    <v-app-bar-nav-icon></v-app-bar-nav-icon>
+    <v-app-bar-nav-icon @click="setSideBar(!sideBar)"></v-app-bar-nav-icon>
 
     <!-- header bagian tengah -->
     <v-toolbar-title class="white--text">Vueshop</v-toolbar-title>
@@ -24,10 +24,28 @@
       slot="extension"
       hide-details
       append-icon="mdi-microphone"
-      flat
+      text
       label="Search"
       prepend-inner-icon="mdi-magnify"
       solo-inverted
     ></v-text-field>
   </v-toolbar>
 </template>
+
+<script>
+import { mapGetters, mapActions } from 'vuex'
+
+export default {
+  name: 'c-header',
+  methods: {
+   ...mapActions({
+     setSideBar : 'setSideBar',
+   }),
+  },
+  computed: {
+    ...mapGetters({
+      sideBar : 'sideBar',
+    }),
+  }
+}
+</script>
