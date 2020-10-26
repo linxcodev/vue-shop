@@ -36,7 +36,7 @@
 
       <v-layout wrap>
         <v-flex v-for="(book) in books" :key="`book-`+book.id" xs6>
-          <v-card :to="'/book/'+ book.slug">
+          <v-card :to="'/books/'+ book.slug">
             <v-img
               :src="getImage(book.cover)"
               class="white--text"

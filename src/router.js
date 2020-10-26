@@ -32,6 +32,18 @@ export default new Router({
       component: () => import('@/views/Books.vue')
     },
     {
+      path: '/category/:slug',
+      name: 'category',
+      component: () => import( /* webpackChunkName: "category" */
+      './views/Category.vue')
+    },
+    {
+     path: '/books/:slug',
+     name: 'book',
+     component: () => import( /* webpackChunkName: "book" */
+    './views/Book.vue')
+    },
+    {
      path: '*',
      redirect: {
        name: 'home'

@@ -4,6 +4,7 @@
       <v-subheader>
         All Category
       </v-subheader>
+      
       <v-layout wrap>
         <v-flex v-for="(category) in categories" :key="`category-
         `+category.id" xs6>
@@ -20,6 +21,7 @@
           </v-card>
         </v-flex>
       </v-layout>
+
       <v-pagination
         v-model="page"
         @input="go"
