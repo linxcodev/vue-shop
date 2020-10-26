@@ -1,34 +1,28 @@
 <template>
- <v-app>
-   <!-- component header -->
-   <c-header />
+  <v-app>
+    <v-app-bar app>
+      Header
+    </v-app-bar>
 
-   <!-- component sidebar -->
-   <c-side-bar />
+    <v-navigation-drawer app>
+      Side Menu
+    </v-navigation-drawer>
 
-   <!-- konten utama -->
-   <v-content>
-     <v-slide-y-transition mode="out-in">
-       <router-view></router-view>
-     </v-slide-y-transition>
-   </v-content>
+    <v-content>
+      <v-container fluid>
+        <!-- jika menggunakan vue-router -->
+        <router-view></router-view>
+      </v-container>
+    </v-content>
 
-   <!-- component footer -->
-   <c-footer />
- </v-app>
+    <v-footer app>
+      Footer
+    </v-footer>
+  </v-app>
 </template>
 
 <script>
-  import CHeader from '@/components/CHeader.vue';
-  import CFooter from '@/components/CFooter.vue';
-  import CSideBar from '@/components/CSideBar.vue';
-
-  export default {
-   name: 'App',
-   components: {
-     CHeader,
-     CFooter,
-     CSideBar
-   }
-  }
+export default {
+ name: 'App'
+}
 </script>

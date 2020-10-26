@@ -30,6 +30,12 @@ export default new Router({
       path: '/books',
       name: 'books',
       component: () => import('@/views/Books.vue')
-    }
+    },
+    {
+     path: '*',
+     redirect: {
+       name: 'home'
+     }
+   },
   ]
 });
