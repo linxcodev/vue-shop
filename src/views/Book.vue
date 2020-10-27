@@ -79,19 +79,25 @@
     methods: {
       ...mapActions({
         addCart : 'cart/add',
+        setAlert : 'alert/set',
       }),
       buy(){
         this.addCart(this.book)
         // Jika tanpa mapAction
         // this.$store.dispatch('cart/add', this.book)
+
+        // show alert
+        this.setAlert({
+          status : true,
+          color : 'info',
+          text : 'Added to cart',
+        })
       },
       go(){
         let { slug } = this.$route.params
         let url = '/books/slug/'+slug
         url = url + '?page='+this.page
         url = encodeURI(url)
-
-        console.log(url);
 
         this.axios.get(url)
         .then((response) => {

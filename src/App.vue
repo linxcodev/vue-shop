@@ -102,6 +102,8 @@
      </v-navigation-drawer>
     </v-card>
 
+    <alert />
+
     <v-content>
       <v-container fluid>
         <v-slide-y-transition mode="out-in">
@@ -123,6 +125,10 @@
 <script>
 export default {
    name: 'App',
+   components: {
+     Alert: () => import( /* webpackChunkName: "alert" */
+    '@/components/Alert.vue')
+   },
    data: () => ({
      drawer: false,
      menus: [
