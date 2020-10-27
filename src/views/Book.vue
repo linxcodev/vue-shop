@@ -67,6 +67,8 @@
 </template>
 
 <script>
+  import { mapActions } from 'vuex';
+
   export default {
     data: () => ({
       book: {}, // objek book
@@ -75,6 +77,14 @@
       this.go()
     },
     methods: {
+      ...mapActions({
+        addCart : 'cart/add',
+      }),
+      buy(){
+        this.addCart(this.book)
+        // Jika tanpa mapAction
+        // this.$store.dispatch('cart/add', this.book)
+      },
       go(){
         let { slug } = this.$route.params
         let url = '/books/slug/'+slug
@@ -92,9 +102,6 @@
           let { responses } = error
           console.log(responses)
         })
-      },
-      buy(){
-        alert('buy')
       }
     }
   };
