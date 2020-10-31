@@ -67,7 +67,7 @@
            Login
          </v-btn>
 
-         <v-btn block color="success">
+         <v-btn block color="success"  @click="setDialogComponent('register')">
            <v-icon left>mdi-account</v-icon>
            Register
          </v-btn>
@@ -93,7 +93,7 @@
 
        <template v-slot:append v-if="!guest">
          <div class="pa-2">
-           <v-btn block color="red" dark>
+           <v-btn block color="red" dark @click="logout">
              <v-icon left>mdi-lock</v-icon>
              Logout
            </v-btn>
@@ -143,6 +143,8 @@ export default {
     '@/components/Search.vue'),
     Login: () => import( /* webpackChunkName: "login" */
     '@/components/Login.vue'),
+    Register: () => import( /* webpackChunkName: "register" */
+    '@/components/Register.vue'),
    },
    data: () => ({
      drawer: false,
@@ -175,7 +177,34 @@ export default {
      ...mapActions({
        setDialogStatus : 'dialog/setStatus',
        setDialogComponent : 'dialog/setComponent',
+       setAuth : 'auth/set', // <=
+       setAlert : 'alert/set', // <=
      }),
+     logout(){
+      let config = {
+        headers: {
+        'Authorization': 'Bearer ' + this.user.api_token,
+        },
+      }
+
+      this.axios.post('/logout', {}, config)
+      .then((response) => {
+        this.setAuth({}) // kosongkan auth ketika logout
+        this.setAlert({
+          status : true,
+          color : 'success',
+          text : 'Logout successfully',
+        })
+      }).catch((error) => {
+        let {data} = error.response
+
+        this.setAlert({
+          status : true,
+          color : 'error',
+          text : data.message,
+        })
+      })
+    },
   }
-};
+}
 </script>
