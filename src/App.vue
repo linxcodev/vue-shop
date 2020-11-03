@@ -8,7 +8,7 @@
      <!-- pemisah konten -->
      <v-spacer></v-spacer>
 
-     <v-btn icon>
+     <v-btn icon @click="setDialogComponent('cart')">
       <v-badge color="orange" overlap>
         <template v-slot:badge>
           <span>{{countCart}}</span>
@@ -26,7 +26,7 @@
      label="Search"
      prepend-inner-icon="mdi-magnify"
      @click="setDialogComponent('search')"
-    ></v-text-field>
+     ></v-text-field>
     </v-app-bar>
 
     <v-app-bar app color="primary" dark v-else>
@@ -36,7 +36,7 @@
 
      <v-spacer></v-spacer>
 
-     <v-btn icon to="/about">
+     <v-btn icon @click="setDialogComponent('cart')">
        <v-badge color="orange" overlap>
          <template v-slot:badge>
            <span>{{countCart}}</span>
@@ -145,6 +145,8 @@ export default {
     '@/components/Login.vue'),
     Register: () => import( /* webpackChunkName: "register" */
     '@/components/Register.vue'),
+    Cart: () => import( /* webpackChunkName: "cart" */
+    '@/components/Cart.vue'),
    },
    data: () => ({
      drawer: false,

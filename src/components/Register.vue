@@ -130,7 +130,7 @@
             this.setAlert({
               status : true,
               color : 'error',
-              text : data.message.email[0],
+              text : data.message,
             })
           })
         }
