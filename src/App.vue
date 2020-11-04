@@ -192,6 +192,7 @@ export default {
       this.axios.post('/logout', {}, config)
       .then((response) => {
         this.setAuth({}) // kosongkan auth ketika logout
+
         this.setAlert({
           status : true,
           color : 'success',

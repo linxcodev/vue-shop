@@ -77,6 +77,7 @@ export default {
     ...mapActions({
       setAlert : 'alert/set',
       setAuth : 'auth/set',
+      prevUrl : 'prevUrl',
     }),
     submit () {
       if (this.$refs.form.validate()) {
@@ -98,6 +99,7 @@ export default {
               text : 'Login success',
             })
 
+            if(this.prevUrl.length>0) this.$router.push(this.prevUrl)
             this.close()
           }
           else{
