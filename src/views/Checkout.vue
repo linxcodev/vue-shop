@@ -307,9 +307,10 @@
                 .then((response) => {
                 let { data } = response
                 if(data && data.status=='success'){
-                    this.setPayment(data.data) // <= ini
-                    this.$router.push({path: "/payment"})
                     this.setCart([])
+                    // this.setPayment(data.data) // <= ini
+                    let payment_link = data.data.payment_link
+                    window.location = payment_link
                 }
                 this.setAlert({
                     status : true,
