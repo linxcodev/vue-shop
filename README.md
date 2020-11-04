@@ -25,5 +25,10 @@ yarn run test
 yarn run lint
 ```
 
+### Backend
+```
+https://github.com/linxcodev/larashop-api
+```
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
