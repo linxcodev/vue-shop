@@ -80,6 +80,7 @@
          v-for="(item, index) in menus"
          :key="`menu-`+index"
          :to="item.route"
+         v-if="!item.auth || (item.auth && !guest)"
          >
            <v-list-item-icon>
              <v-icon left>{{ item.icon }}</v-icon>
@@ -152,7 +153,11 @@ export default {
      drawer: false,
      menus: [
        { title: 'Home', icon: 'mdi-home', route: '/' },
-       { title: 'About', icon: 'mdi-account', route: '/about' },
+       { title: 'Profile', icon: 'mdi-account', route: '/profile', auth:
+       true },
+       { title: 'My Order', icon: 'mdi-shopping', route: '/my-order', auth:
+       true },
+       { title: 'About', icon: 'mdi-help-box', route: '/about' },
      ]
    }),
    computed: {

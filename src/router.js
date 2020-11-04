@@ -15,6 +15,20 @@ const router = new Router({
       component: Home
     },
     {
+     path: '/profile',
+     name: 'profile',
+     component: () => import( /* webpackChunkName: "profile" */
+    './views/Profile.vue'),
+     meta: { auth: true }
+    },
+    {
+     path: '/my-order',
+     name: 'my-order',
+     component: () => import( /* webpackChunkName: "my-order" */
+    './views/MyOrder.vue'),
+     meta: { auth: true }
+    },
+    {
       path: '/about',
       name: 'about',
       // route level code-splitting
